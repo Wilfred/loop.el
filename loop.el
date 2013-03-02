@@ -20,6 +20,8 @@
 ;; loop-break, loop-continue, loop-return
 
 (defmacro loop-while (condition &rest body)
+  "Repeatedly evaluate BODY while CONDITION is non-nil."
+  (declare (indent defun))
   `(catch 'loop-break
      (while ,condition ,@body)))
 
