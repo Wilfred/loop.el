@@ -44,7 +44,10 @@
             (setq ,list-var (cdr ,list-var))
             ,@body)))))
 
-(defun loop-break (throw 'loop-break))
+(defun loop-break ()
+  "Terminate evaluation of a loop-while, loop-do-while, or loop-for-each block.
+If there are nest loops, breaks out of the innermost loop."
+  (throw 'loop-break))
 
 (provide 'loop)
 ;;; loop.el ends here
