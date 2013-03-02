@@ -1,5 +1,24 @@
 ;;; loop.el -- modern friendly loop structures
 
+;; Copyright (C) 2013 Wilfred Hughes
+
+;; Author: Wilfred Hughes <me@wilfred.me.uk>
+;; Version: 0.2
+;; Keywords: loop, while, for each, break, continue
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ;;; Commentary:
 
 ;; Emacs lisp is missing loop structures familiar to users of newer
@@ -26,6 +45,8 @@
      (while ,condition ,@body)))
 
 (defmacro loop-do-while (condition &rest body)
+  "Evaluate BODY, then repeatedly BODY while CONDITION is non-nil."
+  (declare (indent defun))
   (let ((is-first-iteration-var (gensym)))
     `(catch 'loop-break
        (progn
@@ -35,6 +56,8 @@
 
 ;; todo: support vectors and strings
 (defmacro loop-for-each (var-with-list &rest body)
+  "For every item in LIST, evaluate BODY with VAR bound to that item."
+  (declare (indent defun))
   (let ((var (car var-with-list))
         (list (cadr var-with-list))
         (list-var (gensym)))
