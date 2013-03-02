@@ -48,8 +48,8 @@
 
 (defun loop-break ()
   "Terminate evaluation of a loop-while, loop-do-while, or loop-for-each block.
-If there are nest loops, breaks out of the innermost loop."
-  (throw 'loop-break))
+If there are nested loops, breaks out of the innermost loop."
+  (throw 'loop-break nil))
 
 (provide 'loop)
 ;;; loop.el ends here
