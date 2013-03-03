@@ -23,6 +23,7 @@ as well as break and continue.
 ## Alternatives
 
 * The traditional `while` and `dolist`
+* The `loop` macro in `cl`
 
 ## Changelog
 
