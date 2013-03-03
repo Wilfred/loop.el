@@ -3,7 +3,7 @@
 ;; Copyright (C) 2013 Wilfred Hughes
 
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
-;; Version: 0.3
+;; Version: 1.0
 ;; Keywords: loop, while, for each, break, continue
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -60,19 +60,20 @@
      (loop-while (not ,condition) ,@body)))
 
 ;; todo: support vectors and strings
-(defmacro loop-for-each (var-with-list &rest body)
+(defmacro loop-for-each (var list &rest body)
   "For every item in LIST, evaluate BODY with VAR bound to that item."
   (declare (indent defun))
-  (let ((var (car var-with-list))
-        (list (cadr var-with-list))
-        (list-var (gensym)))
+  (let ((list-var (gensym)))
     `(catch 'loop-break
-       `(let ((,list-var ,list)
+       (let ((,list-var ,list)
               (,var))
           (while ,list-var
             (setq ,var (car ,list-var))
             (setq ,list-var (cdr ,list-var))
             ,@body)))))
+
+(macroexpand-all '(loop-for-each x (list 1 2 3 4 5 6 7 8 9)
+      (setq sum (+ sum x))))
 
 (defun loop-break ()
   "Terminate evaluation of a loop-while, loop-do-while, or loop-for-each block.

@@ -31,6 +31,12 @@
       (setq x (1+ x)))
     (should (equal sum 45))))
 
+(ert-deftest loop-test-for-each ()
+  (let ((sum 0))
+    (loop-for-each x (list 1 2 3 4 5 6 7 8 9)
+      (setq sum (+ sum x)))
+    (should (equal sum 45))))
+
 (defun loop-run-tests ()
   (interactive)
   (ert-run-tests-interactively "loop-test-"))

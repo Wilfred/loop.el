@@ -17,5 +17,6 @@ as well as break and continue.
 
 ## Changelog
 
-* v0.3 Added loop-until
+* v1.0 `loop-for-each` now takes three arguments: `(VAR LIST BODY...)`
+* v0.3 Added `loop-until`
 * v0.2 Basic working implementation
