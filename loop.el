@@ -72,9 +72,6 @@
             (setq ,list-var (cdr ,list-var))
             ,@body)))))
 
-(macroexpand-all '(loop-for-each x (list 1 2 3 4 5 6 7 8 9)
-      (setq sum (+ sum x))))
-
 (defun loop-break ()
   "Terminate evaluation of a loop-while, loop-do-while, or loop-for-each block.
 If there are nested loops, breaks out of the innermost loop."
