@@ -3,7 +3,7 @@
 ;; Copyright (C) 2013 Wilfred Hughes
 
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
-;; Version: 0.2
+;; Version: 0.3
 ;; Keywords: loop, while, for each, break, continue
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -53,6 +53,12 @@
          ,@body
          (while ,condition
            ,@body)))))
+
+(defmacro loop-until (condition &rest body)
+  "Repeatedly evaluate BODY until CONDITION is non-nil."
+  (declare (indent defun))
+  `(catch 'loop-break
+     (loop-while (not ,condition) ,@body)))
 
 ;; todo: support vectors and strings
 (defmacro loop-for-each (var-with-list &rest body)

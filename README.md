@@ -14,3 +14,8 @@ as well as break and continue.
 ## Alternatives
 
 * The traditional `while` and `dolist`
+
+## Changelog
+
+* v0.3 Added loop-until
+* v0.2 Basic working implementation
