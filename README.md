@@ -17,7 +17,7 @@ as well as break and continue.
 
     (let ((x 0))
       ;; sets x to 6
-      (loop-for-each (item (list 1 2 3))
+      (loop-for-each item (list 1 2 3)
          (setq x (+ x item))))
 
 ## Alternatives
