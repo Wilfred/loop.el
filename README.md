@@ -4,6 +4,8 @@ Emacs lisp is missing loop structures familiar to users of newer
 languages. This library adds a selection of popular loop structures
 as well as break and continue.
 
+loop.el also has full unit tests.
+
 ## Contents
 
 * `loop-while` `(condition body...)`
@@ -30,3 +32,7 @@ as well as break and continue.
 * v1.0 `loop-for-each` now takes three arguments: `(VAR LIST BODY...)`
 * v0.3 Added `loop-until`
 * v0.2 Basic working implementation
+
+## Running the tests
+
+    M-x loop-run-tests
