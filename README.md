@@ -4,6 +4,15 @@ Emacs lisp is missing loop structures familiar to users of newer
 languages. This library adds a selection of popular loop structures
 as well as break and continue.
 
+## Contents
+
+* `loop-while` `(condition body...)`
+* `loop-do-while` `(condition body...)`
+* `loop-until` `(condition body...)`
+* `loop-for-each` `(var list body...)`
+
+* `loop-break` `()`
+
 ## Example usage
 
     (let ((x 0))
