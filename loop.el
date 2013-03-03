@@ -37,6 +37,8 @@
 
 ;; loop-break, loop-continue, loop-return
 
+(require 'cl) ;; gensym
+
 (defmacro loop-while (condition &rest body)
   "Repeatedly evaluate BODY while CONDITION is non-nil."
   (declare (indent defun))
