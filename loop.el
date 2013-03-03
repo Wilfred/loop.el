@@ -35,7 +35,6 @@
 
 ;; Things to implement:
 
-;; loop-while, loop-for-each, loop-do-while, loop-for
 ;; loop-break, loop-continue, loop-return
 
 (defmacro loop-while (condition &rest body)
