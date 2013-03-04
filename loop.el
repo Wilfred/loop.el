@@ -1,4 +1,4 @@
-;;; loop.el -- friendly imperative loop structures
+;;; loop.el --- friendly imperative loop structures
 
 ;; Copyright (C) 2013 Wilfred Hughes
 
