@@ -1,4 +1,4 @@
-# loop.el -- modern friendly loop structures for Emacs lisp
+# loop.el -- friendly imperative loop structures for Emacs lisp
 
 Emacs lisp is missing loop structures familiar to users of newer
 languages. This library adds a selection of popular loop structures
