@@ -76,13 +76,13 @@
             ,@body)))))
 
 (defun loop-break ()
-  "Terminate evaluation of a loop-while, loop-do-while, or loop-for-each block.
+  "Terminate evaluation of a `loop-while', `loop-do-while', or `loop-for-each' block.
 If there are nested loops, breaks out of the innermost loop."
   (throw 'loop-break nil))
 
 (defun loop-continue ()
-  "Skip the rest of the current loop-while, loop-do-while, or
-loop-for-each block and continue to the next iteration. If there
+  "Skip the rest of the current `loop-while', `loop-do-while', or
+`loop-for-each' block and continue to the next iteration. If there
 are nested loops, applies to the innermost loop."
   (throw 'loop-continue nil))
 
