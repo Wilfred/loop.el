@@ -71,9 +71,10 @@
        (let ((,list-var ,list)
               (,var))
           (while ,list-var
-            (setq ,var (car ,list-var))
-            (setq ,list-var (cdr ,list-var))
-            ,@body)))))
+            (catch 'loop-continue
+              (setq ,var (car ,list-var))
+              (setq ,list-var (cdr ,list-var))
+              ,@body))))))
 
 (defun loop-break ()
   "Terminate evaluation of a `loop-while', `loop-do-while', or `loop-for-each' block.

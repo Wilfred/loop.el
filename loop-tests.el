@@ -108,6 +108,16 @@
         (loop-break)))
     (should (equal sum 15))))
 
+(ert-deftest loop-test-for-each-continue ()
+  "Test `loop-continue' inside a `loop-for-each' block."
+  (let ((sum 0))
+    ;; sum the numbers 1, 3, 4, 5
+    (loop-for-each x (list 1 2 3 4 5)
+      (when (= x 2)
+        (loop-continue))
+      (setq sum (+ sum x)))
+    (should (equal sum 13))))
+
 (defun loop-run-tests ()
   "Run all unit tests for loop.el"
   (interactive)
