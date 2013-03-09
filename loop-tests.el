@@ -15,7 +15,6 @@
         (sum 0))
     ;; sum the numbers 0 to 5
     (loop-while (< x 10)
-      (print sum)
       (setq sum (+ sum x))
       (setq x (1+ x))
       (when (= x 6)
