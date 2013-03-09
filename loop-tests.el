@@ -41,6 +41,18 @@
       (setq x (1+ x)))
     (should (equal sum 45))))
 
+(ert-deftest loop-test-do-while-continue ()
+  "Test `loop-continue' inside a loop-do-while block."
+  (let ((x 0)
+        (sum 0))
+    ;; sum the numbers 1, 3, 4, 5
+    (loop-while (< x 5)
+      (setq x (1+ x))
+      (when (= x 2)
+        (loop-continue))
+      (setq sum (+ sum x)))
+    (should (equal sum 13))))
+
 (ert-deftest loop-test-until ()
   (let ((x 0)
         (sum 0))

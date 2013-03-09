@@ -51,9 +51,11 @@
   (let ((is-first-iteration-var (gensym)))
     `(catch 'loop-break
        (progn
-         ,@body
+         (catch 'loop-continue
+           ,@body)
          (while ,condition
-           ,@body)))))
+           (catch 'loop-continue
+             ,@body))))))
 
 (defmacro loop-until (condition &rest body)
   "Repeatedly evaluate BODY until CONDITION is non-nil."
