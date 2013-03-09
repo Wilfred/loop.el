@@ -30,6 +30,7 @@ loop.el also has full unit tests.
 
 ## Changelog
 
+* v1.1 Added `loop-continue`
 * v1.0 `loop-for-each` now takes three arguments: `(VAR LIST BODY...)`
 * v0.3 Added `loop-until`
 * v0.2 Basic working implementation
