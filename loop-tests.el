@@ -41,6 +41,17 @@
       (setq x (1+ x)))
     (should (equal sum 45))))
 
+(ert-deftest loop-test-until-break ()
+  (let ((x 0)
+        (sum 0))
+    ;; sum the numbers 0 to 5
+    (loop-until (= x 10)
+      (setq sum (+ sum x))
+      (setq x (1+ x))
+      (when (= x 6)
+        (loop-break)))
+    (should (equal sum 15))))
+
 (ert-deftest loop-test-for-each ()
   (let ((sum 0))
     (loop-for-each x (list 1 2 3 4 5 6 7 8 9)
