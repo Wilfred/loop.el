@@ -14,6 +14,7 @@ loop.el also has full unit tests.
 * `loop-for-each` `(var list body...)`
 
 * `loop-break` `()`
+* `loop-continue` `()`
 
 ## Example usage
 
