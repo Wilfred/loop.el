@@ -27,15 +27,13 @@
 
 ;;; Todo:
 
-;; * Implement
 ;; * Document
 ;; * Examples
-;; * Unit test
-;; * Fix indentation
 
-;; Things to implement:
+;; Future ideas:
 
-;; loop-break, loop-continue, loop-return
+;; * loop-return
+;; * Named loops so you can break/continue outer loops
 
 (require 'cl) ;; gensym
 
