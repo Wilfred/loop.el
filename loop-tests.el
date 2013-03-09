@@ -2,6 +2,7 @@
 (require 'loop)
 
 (ert-deftest loop-test-while ()
+  "Test basic `loop-while' usage."
   (let ((x 0)
         (sum 0))
     ;; sum the numbers 0 to 9
@@ -11,6 +12,7 @@
     (should (equal sum 45))))
 
 (ert-deftest loop-test-while-break ()
+  "Test `loop-break' inside a `loop-while' block."
   (let ((x 0)
         (sum 0))
     ;; sum the numbers 0 to 5
@@ -22,6 +24,7 @@
     (should (equal sum 15))))
 
 (ert-deftest loop-test-while-continue ()
+  "Test `loop-continue' inside a `loop-while' block."
   (let ((x 0)
         (sum 0))
     ;; sum the numbers 1, 3, 4, 5
@@ -33,6 +36,7 @@
     (should (equal sum 13))))
 
 (ert-deftest loop-test-do-while ()
+  "Test basic `loop-do-while' usage."
   (let ((x 0)
         (sum 0))
     ;; our condition is false on the first iteration
@@ -42,7 +46,7 @@
     (should (equal sum 45))))
 
 (ert-deftest loop-test-do-while-continue ()
-  "Test `loop-continue' inside a loop-do-while block."
+  "Test `loop-continue' inside a `loop-do-while' block."
   (let ((x 0)
         (sum 0))
     ;; sum the numbers 1, 3, 4, 5
@@ -54,6 +58,7 @@
     (should (equal sum 13))))
 
 (ert-deftest loop-test-until ()
+  "Test basic `loop-until' usage."
   (let ((x 0)
         (sum 0))
     ;; sum the numbers 0 to 9
@@ -63,6 +68,7 @@
     (should (equal sum 45))))
 
 (ert-deftest loop-test-until-break ()
+  "Test `loop-break' inside a `loop-until' block."
   (let ((x 0)
         (sum 0))
     ;; sum the numbers 0 to 5
@@ -74,12 +80,14 @@
     (should (equal sum 15))))
 
 (ert-deftest loop-test-for-each ()
+  "Test basic `loop-for-each' usage."
   (let ((sum 0))
     (loop-for-each x (list 1 2 3 4 5 6 7 8 9)
       (setq sum (+ sum x)))
     (should (equal sum 45))))
 
 (ert-deftest loop-test-for-each-break ()
+  "Test `loop-break' inside a `loop-for-each' block."
   (let ((sum 0))
     ;; sum the numbers 1 to 5
     (loop-for-each x (list 1 2 3 4 5 6 7 8 9)
@@ -89,5 +97,6 @@
     (should (equal sum 15))))
 
 (defun loop-run-tests ()
+  "Run all unit tests for loop.el"
   (interactive)
   (ert-run-tests-interactively "loop-test-"))
