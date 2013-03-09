@@ -60,8 +60,7 @@
 (defmacro loop-until (condition &rest body)
   "Repeatedly evaluate BODY until CONDITION is non-nil."
   (declare (indent defun))
-  `(catch 'loop-break
-     (loop-while (not ,condition) ,@body)))
+  `(loop-while (not ,condition) ,@body))
 
 ;; todo: support vectors and strings
 (defmacro loop-for-each (var list &rest body)
