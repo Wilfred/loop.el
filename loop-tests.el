@@ -79,6 +79,18 @@
         (loop-break)))
     (should (equal sum 15))))
 
+(ert-deftest loop-test-until-continue ()
+  "Test `loop-continue' inside a `loop-until' block."
+  (let ((x 0)
+        (sum 0))
+    ;; sum the numbers 1, 3, 4, 5
+    (loop-until (= x 5)
+      (setq x (1+ x))
+      (when (= x 2)
+        (loop-continue))
+      (setq sum (+ sum x)))
+    (should (equal sum 13))))
+
 (ert-deftest loop-test-for-each ()
   "Test basic `loop-for-each' usage."
   (let ((sum 0))
