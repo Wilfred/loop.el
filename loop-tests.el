@@ -32,6 +32,15 @@
       (setq sum (+ sum x)))
     (should (equal sum 13))))
 
+(ert-deftest loop-test-do-while ()
+  (let ((x 0)
+        (sum 0))
+    ;; our condition is false on the first iteration
+    (loop-do-while (and (> x 0) (< x 10))
+      (setq sum (+ sum x))
+      (setq x (1+ x)))
+    (should (equal sum 45))))
+
 (ert-deftest loop-test-until ()
   (let ((x 0)
         (sum 0))
