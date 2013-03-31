@@ -25,8 +25,9 @@ loop.el also has full unit tests.
 
 ## Alternatives
 
-* The traditional `while` and `dolist`
-* The `loop` macro in `cl`
+* The traditional `while` loop
+* The `loop` (more functional) and `dolist` (more imperative) macros in `cl`
+* `-each` in [dash.el](https://github.com/magnars/dash.el)
 
 ## Changelog
 
