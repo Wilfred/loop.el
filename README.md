@@ -4,7 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/Wilfred/loop.el/badge.svg)](https://coveralls.io/r/Wilfred/loop.el)
 [![MELPA](http://melpa.org/packages/loop-badge.svg)](http://melpa.org/#/loop)
 [![MELPA Stable](http://stable.melpa.org/packages/loop-badge.svg)](http://stable.melpa.org/#/loop)
-[![Tag Version](https://img.shields.io/github/tag/Wilfred/loop.el.svg)](https://github.com/Wilfred/loop.el/tags)
 [![License](http://img.shields.io/:license-gpl3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 
 Emacs lisp is missing loop structures familiar to users of newer
