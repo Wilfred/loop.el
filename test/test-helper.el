@@ -35,6 +35,10 @@
 (require 'el-mock)
 (eval-when-compile
     (require 'cl))
+(require 'undercover)
+(undercover "loop.el"
+	    (:exclude "*-test.el")
+	    (:report-file "/tmp/undercover-report.json"))
 (require 'loop)
 
 (provide 'test-helper)
