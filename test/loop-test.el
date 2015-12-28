@@ -1,5 +1,9 @@
-(require 'ert)
-(require 'loop)
+;;; Test for `loop'
+
+;;; Commentary:
+;; These are the tests for `loop'
+
+;;; Code:
 
 (ert-deftest loop-test-while ()
   "Test basic `loop-while' usage."
