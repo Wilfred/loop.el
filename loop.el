@@ -25,11 +25,6 @@
 ;; languages. This library adds a selection of popular loop structures
 ;; as well as break and continue.
 
-;;; Todo:
-
-;; * Document
-;; * Examples
-
 ;; Future ideas:
 
 ;; * loop-return

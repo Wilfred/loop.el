@@ -13,22 +13,127 @@ as well as break and continue.
 
 loop.el also has full unit tests.
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [loop.el --- friendly imperative loop structures for Emacs lisp](#loopel-----friendly-imperative-loop-structures-for-emacs-lisp)
+    - [Contents](#contents)
+        - [while](#while)
+        - [do while](#do-while)
+        - [until](#until)
+        - [for each](#for-each)
+        - [break](#break)
+        - [continue](#continue)
+    - [Alternatives](#alternatives)
+    - [Changelog](#changelog)
+    - [Running the tests](#running-the-tests)
+
+<!-- markdown-toc end -->
+
 ## Contents
 
-* `loop-while` `(condition body...)`
-* `loop-do-while` `(condition body...)`
-* `loop-until` `(condition body...)`
+### while
+
+Repeatedly evaluate BODY while CONDITION is non-nil.
+
+`loop-while` `(condition body...)`
+
+Example:
+
+``` lisp
+(let ((x 0)
+      (sum 0))
+  ;; sum the numbers 0 to 9
+  (loop-while (< x 10)
+    (setq sum (+ sum x))
+    (setq x (1+ x))))
+```
+
+### do while
+
+Evaluate BODY, then repeatedly BODY while CONDITION is non-nil.
+
+`loop-do-while` `(condition body...)`
+
+Example:
+
+``` lisp
+(let ((x 0)
+      (sum 0))
+  ;; our condition is false on the first iteration
+  (loop-do-while (and (> x 0) (< x 10))
+    (setq sum (+ sum x))
+    (setq x (1+ x))))
+```
+
+### until
+
+Repeatedly evaluate BODY until CONDITION is non-nil.
+
+`loop-until` `(condition body...)`
+
+Example:
+
+``` lisp
+(let ((x 0)
+      (sum 0))
+  ;; sum the numbers 0 to 9
+  (loop-until (= x 10)
+    (setq sum (+ sum x))
+    (setq x (1+ x))))
+```
+
+### for each
+
+For every item in LIST, evaluate BODY with VAR bound to that item.
+
 * `loop-for-each` `(var list body...)`
 
-* `loop-break` `()`
-* `loop-continue` `()`
+Example:
 
-## Example usage
+``` lisp
+(let ((sum 0))
+  (loop-for-each x (list 1 2 3 4 5 6 7 8 9)
+    (setq sum (+ sum x))))
+```
 
-    (let ((x 0))
-      ;; sets x to 6
-      (loop-for-each item (list 1 2 3)
-         (setq x (+ x item))))
+### break
+
+Terminate evaluation of a `loop-while', `loop-do-while', or
+`loop-for-each' block. If there are nested loops, breaks out of the
+innermost loop.
+
+`loop-break` `()`
+
+Example:
+
+``` lisp
+(let ((sum 0))
+  ;; sum the numbers 1 to 5
+  (loop-for-each x (list 1 2 3 4 5 6 7 8 9)
+    (setq sum (+ sum x))
+    (when (= x 5)
+      (loop-break))))
+```
+
+### continue
+
+Skip the rest of the current `loop-while', `loop-do-while', or
+`loop-for-each' block and continue to the next iteration. If there
+are nested loops, applies to the innermost loop.
+
+`loop-continue` `()`
+
+Example:
+
+``` lisp
+(let ((sum 0))
+  ;; sum the numbers 1, 3, 4, 5
+  (loop-for-each x (list 1 2 3 4 5)
+    (when (= x 2)
+      (loop-continue))
+    (setq sum (+ sum x))))
+```
 
 ## Alternatives
 
