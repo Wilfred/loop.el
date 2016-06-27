@@ -136,8 +136,8 @@ Example:
 
 ## Alternatives
 
-* The traditional `while` loop
-* The `loop` (more functional) and `dolist` (more imperative) macros in `cl`
+* `while` and `dolist` are built-in loop structures
+* The `cl-loop` macro in `cl-lib`
 * `-each` in [dash.el](https://github.com/magnars/dash.el)
 
 ## Changelog
