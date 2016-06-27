@@ -5,6 +5,8 @@
 
 ;;; Code:
 
+(require 'ert)
+
 (ert-deftest loop-test-while ()
   "Test basic `loop-while' usage."
   (let ((x 0)
@@ -121,6 +123,42 @@
         (loop-continue))
       (setq sum (+ sum x)))
     (should (equal sum 13))))
+
+(ert-deftest loop-test-for-each-line ()
+  (with-temp-buffer
+    (insert "foo\nbar\nbaz")
+    (let ((lines nil))
+      (loop-for-each-line
+        (let ((line-start (progn (beginning-of-line) (point)))
+              (line-end (progn (end-of-line) (point))))
+          (push (buffer-substring line-start line-end) lines)))
+      (should (equal (nreverse lines) '("foo" "bar" "baz"))))))
+
+(ert-deftest loop-test-for-each-line-break ()
+  "Test breaking out of `loop-for-each-line'."
+  (with-temp-buffer
+    (insert "foo\nbar\nbaz")
+    (let ((lines nil))
+      (loop-for-each-line
+        (let ((line-start (save-excursion (beginning-of-line) (point)))
+              (line-end (save-excursion (end-of-line) (point))))
+          (when (looking-at "bar")
+            (loop-break))
+          (push (buffer-substring line-start line-end) lines)))
+      (should (equal (nreverse lines) '("foo"))))))
+
+(ert-deftest loop-test-for-each-line-continue ()
+  "Test continuing in `loop-for-each-line'."
+  (with-temp-buffer
+    (insert "foo\nbar\nbaz")
+    (let ((lines nil))
+      (loop-for-each-line
+        (let ((line-start (save-excursion (beginning-of-line) (point)))
+              (line-end (save-excursion (end-of-line) (point))))
+          (when (looking-at "bar")
+            (loop-continue))
+          (push (buffer-substring line-start line-end) lines)))
+      (should (equal (nreverse lines) '("foo" "baz"))))))
 
 (defun loop-run-tests ()
   "Run all unit tests for loop.el"

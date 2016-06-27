@@ -69,6 +69,24 @@
              (setq ,list-var (cdr ,list-var))
              ,@body))))))
 
+(defun loop--last-line-p ()
+  "Return non-nil if point is on the last line in the buffer."
+  (looking-at (rx (0+ not-newline) buffer-end)))
+
+(defmacro loop-for-each-line (&rest body)
+  "For every line in the buffer, put point at the start of the line and
+execute BODY."
+  (declare (indent 0) (debug (&rest form)))
+  `(save-excursion
+     (catch 'loop-break
+       (goto-char (point-min))
+       (while (not (loop--last-line-p))
+         (catch 'loop-continue
+           ,@body)
+         (forward-line))
+       (catch 'loop-continue
+         ,@body))))
+
 (defun loop-break ()
   "Terminate evaluation of a `loop-while', `loop-do-while', or `loop-for-each' block.
 If there are nested loops, breaks out of the innermost loop."

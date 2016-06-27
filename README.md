@@ -21,6 +21,7 @@ loop.el also has full unit tests.
         - [loop-do-while](#loop-do-while)
         - [loop-until](#loop-until)
         - [loop-for-each](#loop-for-each)
+        - [loop-for-each-line](#loop-for-each-line)
         - [loop-break](#loop-break)
         - [loop-continue](#loop-continue)
     - [Alternatives](#alternatives)
@@ -96,11 +97,28 @@ Example:
     (setq sum (+ sum x))))
 ```
 
+### loop-for-each-line
+
+For every line in the buffer, put point at the start of the line and
+execute BODY.
+
+* `loop-for-each-loop` `(body...)`
+
+Example:
+
+``` lisp
+;; Count headings in a markdown buffer.
+(let ((heading-count 0))
+  (loop-for-each-line
+    (when (looking-at "#")
+      (setq heading-count (+ heading 1))))
+```
+
 ### loop-break
 
-Terminate evaluation of a `loop-while`, `loop-do-while` or
-`loop-for-each` block. If there are nested loops, breaks out of the
-innermost loop.
+Terminate evaluation of a `loop-while`, `loop-do-while`,
+`loop-for-each`, or `loop-for-each-line` block. If there are nested
+loops, breaks out of the innermost loop.
 
 `loop-break` `()`
 
@@ -142,6 +160,7 @@ Example:
 
 ## Changelog
 
+* v1.2 Added `loop-for-each-line`
 * v1.1 Added `loop-continue`
 * v1.0 `loop-for-each` now takes three arguments: `(VAR LIST BODY...)`
 * v0.3 Added `loop-until`
