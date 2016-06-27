@@ -62,12 +62,12 @@
   (let ((list-var (make-symbol "list")))
     `(catch 'loop-break
        (let ((,list-var ,list)
-              (,var))
-          (while ,list-var
-            (catch 'loop-continue
-              (setq ,var (car ,list-var))
-              (setq ,list-var (cdr ,list-var))
-              ,@body))))))
+             (,var))
+         (while ,list-var
+           (catch 'loop-continue
+             (setq ,var (car ,list-var))
+             (setq ,list-var (cdr ,list-var))
+             ,@body))))))
 
 (defun loop-break ()
   "Terminate evaluation of a `loop-while', `loop-do-while', or `loop-for-each' block.
