@@ -17,12 +17,12 @@ loop.el also has full unit tests.
 
 - [loop.el --- friendly imperative loop structures for Emacs lisp](#loopel-----friendly-imperative-loop-structures-for-emacs-lisp)
     - [Contents](#contents)
-        - [while](#while)
-        - [do while](#do-while)
-        - [until](#until)
-        - [for each](#for-each)
-        - [break](#break)
-        - [continue](#continue)
+        - [loop-while](#loop-while)
+        - [loop-do-while](#loop-do-while)
+        - [loop-until](#loop-until)
+        - [loop-for-each](#loop-for-each)
+        - [loop-break](#loop-break)
+        - [loop-continue](#loop-continue)
     - [Alternatives](#alternatives)
     - [Changelog](#changelog)
     - [Running the tests](#running-the-tests)
@@ -31,7 +31,7 @@ loop.el also has full unit tests.
 
 ## Contents
 
-### while
+### loop-while
 
 Repeatedly evaluate BODY while CONDITION is non-nil.
 
@@ -48,7 +48,7 @@ Example:
     (setq x (1+ x))))
 ```
 
-### do while
+### loop-do-while
 
 Evaluate BODY, then repeatedly BODY while CONDITION is non-nil.
 
@@ -65,7 +65,7 @@ Example:
     (setq x (1+ x))))
 ```
 
-### until
+### loop-until
 
 Repeatedly evaluate BODY until CONDITION is non-nil.
 
@@ -82,7 +82,7 @@ Example:
     (setq x (1+ x))))
 ```
 
-### for each
+### loop-for-each
 
 For every item in LIST, evaluate BODY with VAR bound to that item.
 
@@ -96,10 +96,10 @@ Example:
     (setq sum (+ sum x))))
 ```
 
-### break
+### loop-break
 
-Terminate evaluation of a `loop-while', `loop-do-while', or
-`loop-for-each' block. If there are nested loops, breaks out of the
+Terminate evaluation of a `loop-while`, `loop-do-while` or
+`loop-for-each` block. If there are nested loops, breaks out of the
 innermost loop.
 
 `loop-break` `()`
@@ -115,10 +115,10 @@ Example:
       (loop-break))))
 ```
 
-### continue
+### loop-continue
 
-Skip the rest of the current `loop-while', `loop-do-while', or
-`loop-for-each' block and continue to the next iteration. If there
+Skip the rest of the current `loop-while`, `loop-do-while`, or
+`loop-for-each` block and continue to the next iteration. If there
 are nested loops, applies to the innermost loop.
 
 `loop-continue` `()`
