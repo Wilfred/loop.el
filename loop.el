@@ -32,7 +32,7 @@
 
 (defmacro loop-while (condition &rest body)
   "Repeatedly evaluate BODY while CONDITION is non-nil."
-  (declare (indent defun))
+  (declare (indent defun) (debug (form &rest form)))
   `(catch 'loop-break
      (while ,condition
        (catch 'loop-continue
@@ -40,7 +40,7 @@
 
 (defmacro loop-do-while (condition &rest body)
   "Evaluate BODY, then repeatedly BODY while CONDITION is non-nil."
-  (declare (indent defun))
+  (declare (indent defun) (debug (form &rest form)))
   (let ((is-first-iteration-var (make-symbol "first-iteration-p")))
     `(catch 'loop-break
        (progn
@@ -52,13 +52,13 @@
 
 (defmacro loop-until (condition &rest body)
   "Repeatedly evaluate BODY until CONDITION is non-nil."
-  (declare (indent defun))
+  (declare (indent defun) (debug (form &rest form)))
   `(loop-while (not ,condition) ,@body))
 
 ;; todo: support vectors and strings
 (defmacro loop-for-each (var list &rest body)
   "For every item in LIST, evaluate BODY with VAR bound to that item."
-  (declare (indent defun))
+  (declare (indent defun) (debug (symbolp form &rest form)))
   (let ((list-var (make-symbol "list")))
     `(catch 'loop-break
        (let ((,list-var ,list)

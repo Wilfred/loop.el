@@ -160,7 +160,8 @@ Example:
 
 ## Changelog
 
-* v1.2 Added `loop-for-each-line`
+* v1.2 Added `loop-for-each-line`. Also added edebug support, so you
+  can step through loops in loop.el.
 * v1.1 Added `loop-continue`
 * v1.0 `loop-for-each` now takes three arguments: `(VAR LIST BODY...)`
 * v0.3 Added `loop-until`
