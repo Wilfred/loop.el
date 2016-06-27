@@ -30,8 +30,6 @@
 ;; * loop-return
 ;; * Named loops so you can break/continue outer loops
 
-(require 'cl) ;; gensym
-
 (defmacro loop-while (condition &rest body)
   "Repeatedly evaluate BODY while CONDITION is non-nil."
   (declare (indent defun))
@@ -43,7 +41,7 @@
 (defmacro loop-do-while (condition &rest body)
   "Evaluate BODY, then repeatedly BODY while CONDITION is non-nil."
   (declare (indent defun))
-  (let ((is-first-iteration-var (gensym)))
+  (let ((is-first-iteration-var (make-symbol "first-iteration-p")))
     `(catch 'loop-break
        (progn
          (catch 'loop-continue
@@ -61,7 +59,7 @@
 (defmacro loop-for-each (var list &rest body)
   "For every item in LIST, evaluate BODY with VAR bound to that item."
   (declare (indent defun))
-  (let ((list-var (gensym)))
+  (let ((list-var (make-symbol "list")))
     `(catch 'loop-break
        (let ((,list-var ,list)
               (,var))
