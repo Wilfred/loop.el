@@ -74,8 +74,8 @@
   (looking-at (rx (0+ not-newline) buffer-end)))
 
 (defmacro loop-for-each-line (&rest body)
-  "For every line in the buffer, put point at the start of the line and
-execute BODY."
+  "Execute BODY for every line in the buffer.
+Point is placed at the start of the line on each iteration."
   (declare (indent 0) (debug (&rest form)))
   `(save-excursion
      (catch 'loop-break
