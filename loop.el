@@ -82,7 +82,8 @@ Point is placed at the start of the line on each iteration."
        (goto-char (point-min))
        (while (not (loop--last-line-p))
          (catch 'loop-continue
-           ,@body)
+           (save-excursion
+             ,@body))
          (forward-line))
        (catch 'loop-continue
          ,@body))))

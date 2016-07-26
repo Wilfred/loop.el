@@ -134,6 +134,19 @@
           (push (buffer-substring line-start line-end) lines)))
       (should (equal (nreverse lines) '("foo" "bar" "baz"))))))
 
+(ert-deftest loop-test-for-each-line-ignores-movement ()
+  "We should execute BODY once for each line, even if point moves around."
+  (with-temp-buffer
+    (insert "foo\nbar\nbaz")
+    (let ((lines nil))
+      (loop-for-each-line
+        (let ((line-start (progn (beginning-of-line) (point)))
+              (line-end (progn (end-of-line) (point))))
+          (push (buffer-substring line-start line-end) lines)
+          ;; This line should have no effect.
+          (forward-line 1)))
+      (should (equal (nreverse lines) '("foo" "bar" "baz"))))))
+
 (ert-deftest loop-test-for-each-line-break ()
   "Test breaking out of `loop-for-each-line'."
   (with-temp-buffer
