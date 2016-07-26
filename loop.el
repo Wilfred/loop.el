@@ -73,9 +73,18 @@
   "Return non-nil if point is on the last line in the buffer."
   (looking-at (rx (0+ not-newline) buffer-end)))
 
+(defun loop--current-line ()
+  "Return the current line that contains point."
+  (save-excursion
+    (let ((line-start (progn (beginning-of-line) (point)))
+          (line-end (progn (end-of-line) (point))))
+      (buffer-substring line-start line-end))))
+
 (defmacro loop-for-each-line (&rest body)
   "Execute BODY for every line in the buffer.
-Point is placed at the start of the line on each iteration."
+Point is placed at the start of the line on each iteration.
+
+Inside BODY, `it' is bound to the contents of the current line."
   (declare (indent 0) (debug (&rest form)))
   `(save-excursion
      (catch 'loop-break
@@ -84,11 +93,13 @@ Point is placed at the start of the line on each iteration."
        (while (not (loop--last-line-p))
          (catch 'loop-continue
            (save-excursion
-             ,@body))
+             (let ((it (loop--current-line)))
+               ,@body)))
          (forward-line))
        ;; Execute body on the last line.
        (catch 'loop-continue
-         ,@body))))
+         (let ((it (loop--current-line)))
+           ,@body)))))
 
 (defun loop-break ()
   "Terminate evaluation of a `loop-while', `loop-do-while', or `loop-for-each' block.

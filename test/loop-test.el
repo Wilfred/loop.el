@@ -147,6 +147,15 @@
           (forward-line 1)))
       (should (equal (nreverse lines) '("foo" "bar" "baz"))))))
 
+(ert-deftest loop-test-for-each-line-it-line ()
+  "We should have `it' set inside `loop-for-each-line'."
+  (with-temp-buffer
+    (insert "foo\nbar\nbaz")
+    (let ((lines nil))
+      (loop-for-each-line
+        (push it lines))
+      (should (equal (nreverse lines) '("foo" "bar" "baz"))))))
+
 (ert-deftest loop-test-for-each-line-break ()
   "Test breaking out of `loop-for-each-line'."
   (with-temp-buffer
