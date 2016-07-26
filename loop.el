@@ -80,11 +80,13 @@ Point is placed at the start of the line on each iteration."
   `(save-excursion
      (catch 'loop-break
        (goto-char (point-min))
+       ;; Execute body on all but the last line.
        (while (not (loop--last-line-p))
          (catch 'loop-continue
            (save-excursion
              ,@body))
          (forward-line))
+       ;; Execute body on the last line.
        (catch 'loop-continue
          ,@body))))
 
