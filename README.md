@@ -162,7 +162,7 @@ Example:
 
 * v1.3 `loop-for-each-line` now works even if point moves
   around. Inside `loop-for-each-line`, `it` is now set to the current
-  line.
+  line. Added `loop-return`.
 * v1.2 Added `loop-for-each-line`. Also added edebug support, so you
   can step through loops in loop.el.
 * v1.1 Added `loop-continue`

@@ -27,7 +27,6 @@
 
 ;; Future ideas:
 
-;; * loop-return
 ;; * Named loops so you can break/continue outer loops
 
 (defmacro loop-while (condition &rest body)
@@ -111,6 +110,12 @@ If there are nested loops, breaks out of the innermost loop."
 `loop-for-each' block and continue to the next iteration. If there
 are nested loops, applies to the innermost loop."
   (throw 'loop-continue nil))
+
+
+(defun loop-return (value)
+  "Terminate evaluation of a `loop-while', `loop-do-while', or `loop-for-each' block.
+The return value from the loop is VALUE."
+  (throw 'loop-break value))
 
 (provide 'loop)
 ;;; loop.el ends here

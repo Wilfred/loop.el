@@ -117,6 +117,15 @@
       (setq sum (+ sum x)))
     (should (equal sum 13))))
 
+(ert-deftest loop-test-for-each-return ()
+  "`loop-return' should let us return values from a loop."
+  (should
+   (equal
+    3
+    (loop-for-each x (list 1 2 3 4)
+      (when (equal x 3)
+        (loop-return x))))))
+
 (ert-deftest loop-test-for-each-line ()
   (with-temp-buffer
     (insert "foo\nbar\nbaz")
