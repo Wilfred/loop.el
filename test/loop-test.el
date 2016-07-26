@@ -1,10 +1,3 @@
-;;; Test for `loop'
-
-;;; Commentary:
-;; These are the tests for `loop'
-
-;;; Code:
-
 (require 'ert)
 
 (ert-deftest loop-test-while ()
