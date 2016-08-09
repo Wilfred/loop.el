@@ -100,7 +100,7 @@ Inside BODY, `it' is bound to the contents of the current line."
          (let ((it (loop--current-line)))
            ,@body)))))
 
-(defun loop-break ()
+(defsubst loop-break ()
   "Terminate evaluation of a `loop-while', `loop-do-while', or `loop-for-each' block.
 If there are nested loops, breaks out of the innermost loop."
   (throw 'loop-break nil))
