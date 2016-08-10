@@ -1,4 +1,5 @@
 (require 'ert)
+(require 'loop)
 
 (ert-deftest loop-test-while ()
   "Test basic `loop-while' usage."
