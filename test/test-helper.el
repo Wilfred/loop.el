@@ -10,5 +10,4 @@
 	    (:exclude "*-test.el")
 	    (:report-file "/tmp/undercover-report.json"))
 
-(provide 'test-helper)
 ;;; test-helper.el ends here
