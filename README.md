@@ -130,7 +130,8 @@ Example:
   (loop-for-each x (list 1 2 3 4 5 6 7 8 9)
     (setq sum (+ sum x))
     (when (= x 5)
-      (loop-break))))
+      (loop-break)))
+  sum)
 ```
 
 ### loop-continue
